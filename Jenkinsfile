@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node{
-            label "Linux && java11"
-        }
-    }
+    agent any
 
     stages {
         stage('Hello') {
