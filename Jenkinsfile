@@ -23,7 +23,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh './mvnw deploy'
+                echo "Hallo Deploy"
+                // sh './mvnw deploy'
             }
         }
     }
