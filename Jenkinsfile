@@ -4,17 +4,26 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Hello Build'
+                sh './mvnw clean package'
             }
         }
         stage('Test') {
             steps {
-                echo 'Hello Test'
+                script {
+                    def data = [
+                        "firstName": "Muhamad Danu",
+                        "lastName" : "Putra"
+                    ]
+                    writeJSON(file: "data.json", json: data)
+                }
+                echo("Start Test")
+                sh  ('./mvnw test')
+                echo("Finish Test")
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Hello Deploy'
+                sh './mvnw deploy'
             }
         }
     }
